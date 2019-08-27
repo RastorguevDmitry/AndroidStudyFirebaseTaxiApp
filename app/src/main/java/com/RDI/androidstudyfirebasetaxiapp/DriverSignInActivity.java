@@ -1,14 +1,14 @@
 package com.RDI.androidstudyfirebasetaxiapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -17,7 +17,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class PassengerSignInActivity extends AppCompatActivity {
+public class DriverSignInActivity extends AppCompatActivity {
+
     private static final String TAG = "DriverSignInActivity";
     private TextInputLayout textInputEmail;
     private TextInputLayout textInputName;
@@ -28,12 +29,13 @@ public class PassengerSignInActivity extends AppCompatActivity {
     private TextView toggleLoginSignUpTextView;
 
     private boolean isLoginModeActive;
+
     private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_passenger_sign_in);
+        setContentView(R.layout.activity_drivger_sign_in);
 
         textInputEmail = findViewById(R.id.textInputEmail);
         textInputName = findViewById(R.id.textInputName);
@@ -41,6 +43,9 @@ public class PassengerSignInActivity extends AppCompatActivity {
         textInputConfirmPassword = findViewById(R.id.textInputConfirmPassword);
         loginSignUnButton = findViewById(R.id.loginSignUnButton);
         toggleLoginSignUpTextView = findViewById(R.id.toggleLoginSignUpTextView);
+
+        auth = FirebaseAuth.getInstance();
+
     }
 
     private boolean validateEmail() {
@@ -67,6 +72,7 @@ public class PassengerSignInActivity extends AppCompatActivity {
             return true;
         }
     }
+
 
     private boolean validatePassword() {
         String passwordInput = textInputPassword.getEditText().getText().toString().trim();
@@ -115,7 +121,7 @@ public class PassengerSignInActivity extends AppCompatActivity {
                             } else {
                                 // If sign in fails, display a message to the user.
                                 Log.w(TAG, "signInWithEmail:failure", task.getException());
-                                Toast.makeText(PassengerSignInActivity.this, "Authentication failed.",
+                                Toast.makeText(DriverSignInActivity.this, "Authentication failed.",
                                         Toast.LENGTH_SHORT).show();
                                 //  updateUI(null);
                             }
@@ -139,7 +145,7 @@ public class PassengerSignInActivity extends AppCompatActivity {
                             } else {
                                 // If sign in fails, display a message to the user.
                                 Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                                Toast.makeText(PassengerSignInActivity.this, "Authentication failed.",
+                                Toast.makeText(DriverSignInActivity.this, "Authentication failed.",
                                         Toast.LENGTH_SHORT).show();
                                 // updateUI(null);
                             }

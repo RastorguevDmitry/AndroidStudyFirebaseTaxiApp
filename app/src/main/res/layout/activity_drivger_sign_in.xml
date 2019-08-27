@@ -6,7 +6,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context="com.RDI.androidstudyfirebasetaxiapp.DrivgerSignInActivity">
+    tools:context="com.RDI.androidstudyfirebasetaxiapp.DriverSignInActivity">
+
+    <TextView
+        android:text="Зарегестрироваться как водитель"
+        android:textAllCaps="true"
+        android:textColor="@color/colorAccent"
+        android:background="@color/colorPrimary"
+        android:textSize="20sp"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -66,7 +77,7 @@
     <Button
         android:id="@+id/loginSignUnButton"
         android:text="Зарегестрировться"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="150dp"
         android:background="@color/colorAccent"
         android:textColor="@color/colorPrimary"
         android:onClick="loginSignUpUser"
