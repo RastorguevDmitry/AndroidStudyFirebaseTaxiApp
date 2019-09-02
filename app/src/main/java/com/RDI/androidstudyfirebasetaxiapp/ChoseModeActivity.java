@@ -7,13 +7,17 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.RDI.androidstudyfirebasetaxiapp.R;
+import com.google.firebase.FirebaseError;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class ChoseModeActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chose_mode);
+
     }
 
     public void goToPassengerSignIn(View view) {

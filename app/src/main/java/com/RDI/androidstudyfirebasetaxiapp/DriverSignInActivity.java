@@ -1,5 +1,6 @@
 package com.RDI.androidstudyfirebasetaxiapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -36,16 +37,16 @@ public class DriverSignInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drivger_sign_in);
-
+        auth = FirebaseAuth.getInstance();
+        if (auth != null) {
+            startActivity(new Intent(DriverSignInActivity.this, DriverMapsActivity.class));
+        }
         textInputEmail = findViewById(R.id.textInputEmail);
         textInputName = findViewById(R.id.textInputName);
         textInputPassword = findViewById(R.id.textInputPassword);
         textInputConfirmPassword = findViewById(R.id.textInputConfirmPassword);
         loginSignUnButton = findViewById(R.id.loginSignUnButton);
         toggleLoginSignUpTextView = findViewById(R.id.toggleLoginSignUpTextView);
-
-        auth = FirebaseAuth.getInstance();
-
     }
 
     private boolean validateEmail() {
@@ -116,6 +117,8 @@ public class DriverSignInActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.d(TAG, "signInWithEmail:success");
+                                startActivity(new Intent(DriverSignInActivity.this, DriverMapsActivity.class));
+
                                 FirebaseUser user = auth.getCurrentUser();
                                 // updateUI(user);
                             } else {
@@ -140,6 +143,7 @@ public class DriverSignInActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.d(TAG, "createUserWithEmail:success");
+                                startActivity(new Intent(DriverSignInActivity.this, DriverMapsActivity.class));
                                 FirebaseUser user = auth.getCurrentUser();
                                 //  updateUI(user);
                             } else {

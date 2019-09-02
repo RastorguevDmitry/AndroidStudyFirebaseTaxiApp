@@ -1,14 +1,15 @@
 package com.RDI.androidstudyfirebasetaxiapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -34,6 +35,11 @@ public class PassengerSignInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_passenger_sign_in);
+
+        auth = FirebaseAuth.getInstance();
+        if (auth != null) {
+            startActivity(new Intent(PassengerSignInActivity.this, PassengerMapsActivity.class));
+        }
 
         textInputEmail = findViewById(R.id.textInputEmail);
         textInputName = findViewById(R.id.textInputName);
@@ -111,6 +117,7 @@ public class PassengerSignInActivity extends AppCompatActivity {
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.d(TAG, "signInWithEmail:success");
                                 FirebaseUser user = auth.getCurrentUser();
+                                startActivity(new Intent(PassengerSignInActivity.this, PassengerMapsActivity.class));
                                 // updateUI(user);
                             } else {
                                 // If sign in fails, display a message to the user.
@@ -135,6 +142,7 @@ public class PassengerSignInActivity extends AppCompatActivity {
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.d(TAG, "createUserWithEmail:success");
                                 FirebaseUser user = auth.getCurrentUser();
+                                startActivity(new Intent(PassengerSignInActivity.this, PassengerMapsActivity.class));
                                 //  updateUI(user);
                             } else {
                                 // If sign in fails, display a message to the user.
